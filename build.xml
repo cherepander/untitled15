@@ -1,0 +1,31 @@
+<project name="MyProject" default="package" basedir=".">
+    <!-- Свойства -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="dist.dir" value="dist"/>
+
+    <!-- Задача очистки -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <!-- Задача компиляции -->
+    <target name="compile" depends="clean">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}"/>
+    </target>
+
+    <!-- Задача тестирования -->
+    <target name="test" depends="compile">
+        <!-- Пример команды для запуска тестов (например, с использованием JUnit) -->
+        <echo message="Running tests..."/>
+        <!-- Вставьте здесь команды для запуска тестов -->
+    </target>
+
+    <!-- Задача упаковки JAR -->
+    <target name="package" depends="test">
+        <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.dir}/MyProject.jar" basedir="${build.dir}"/>
+    </target>
+</project>
